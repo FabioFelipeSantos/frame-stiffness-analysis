@@ -1,0 +1,19 @@
+function k = matRigVigaPortico(E, A, I, L)
+% Determinação dos coeficientes de rigidez da barra
+k11 = (A*E)/L; k12 = 0; k13 = 0; k14 = -k11; k15 = 0; k16 = 0;
+k21 = 0; k22 = (12*E*I)/(L^3); k23 = (6*E*I)/(L^2); k24 = 0; k25 = -k22; k26 = k23;
+k31 = 0; k32 = k23; k33 = (4*E*I) / L; k34 = 0; k35 = -k23; k36 = (2*E*I)/L;
+k41 = k14; k42 = k24; k43 = k34; k44 = k11; k45 = 0; k46 = 0;
+k51 = k15; k52 = k25; k53 = k35; k54 = k45; k55 = k22; k56 = -k23;
+k61 = k16; k62 = k26; k63 = k36; k64 = k46; k65 = k56; k66 = k33;
+
+% Montagem da matriz de rigidez da barra (matriz 6x6, 3 graus por nó, 2
+% nós)
+k = [k11, k12, k13, k14, k15, k16;...
+     k21, k22, k23, k24, k25, k26;...
+     k31, k32, k33, k34, k35, k36;...
+     k41, k42, k43, k44, k45, k46;...
+     k51, k52, k53, k54, k55, k56;...
+     k61, k62, k63, k64, k65, k66;...
+     ];
+end
